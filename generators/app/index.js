@@ -77,8 +77,12 @@ module.exports = yeoman.Base.extend({
       this.templatePath('gitignore'),
       this.destinationPath(`.gitignore`)
     );
+    this.fs.copy(
+      this.templatePath('gitattributes'),
+      this.destinationPath(`.gitattributes`)
+    );
     this.fs.copyTpl(
-      this.templatePath('ngx_http_module.c'),
+      this.templatePath('src/ngx_http_module.c'),
       this.destinationPath(`src/${this.props.name}.c`),
       {
         name: this.props.name,
@@ -87,7 +91,7 @@ module.exports = yeoman.Base.extend({
       }
     );
     this.fs.copyTpl(
-      this.templatePath('ngx_http_module.h'),
+      this.templatePath('src/ngx_http_module.h'),
       this.destinationPath(`src/${this.props.name}.h`),
       {
         name: this.props.name,
