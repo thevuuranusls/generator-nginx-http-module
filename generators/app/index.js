@@ -70,8 +70,12 @@ module.exports = yeoman.Base.extend({
       this.destinationPath(`src/ddebug.h`)
     );
     this.fs.copy(
-      this.templatePath('.editorconfig'),
+      this.templatePath('editorconfig'),
       this.destinationPath(`.editorconfig`)
+    );
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath(`.gitignore`)
     );
     this.fs.copyTpl(
       this.templatePath('ngx_http_module.c'),
