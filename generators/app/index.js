@@ -74,6 +74,15 @@ module.exports = yeoman.Base.extend({
         ctx: this.props.ctx
       }
     );
+    this.fs.copyTpl(
+      this.templatePath('ngx_http_module.h'),
+      this.destinationPath(`${this.props.name}.h`),
+      {
+        name: this.props.name,
+        phase: this.props.phase,
+        ctx: this.props.ctx
+      }
+    );
   },
 
   install: function () {
