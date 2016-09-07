@@ -41,6 +41,22 @@ static void *
 static char *
 <%= name %>_merge_loc_conf(ngx_conf_t *cf, void *prev, void *conf);
 <% } -%>
+static char *
+ngx_http_placeholder(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
+
+
+static ngx_command_t <%= name %>_commands[] = [
+    {
+        ngx_string("placeholder"),
+        NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_HTTP_LIF_CONF|NGX_CONF_1MORE,
+        ngx_http_placeholder,
+        NGX_HTTP_LOC_CONF_OFFSET,
+        0,
+        NULL
+    },
+    ngx_null_command
+];
+
 
 static ngx_http_module_t  <%= name %>_ctx = {
     <% if (ctx.preconfiguration) { -%>
@@ -89,10 +105,10 @@ static ngx_http_module_t  <%= name %>_ctx = {
 };
 
 
-ngx_module_t <%= name %> = {
+ngx_module_t ngx_http_<%= name %>_module = {
     NGX_MODULE_V1,
-    &<%= name %>_ctx,                      /* module context */
-    <%= name %>_commands,                  /* module directives */
+    &ngx_http_<%= name %>_ctx,             /* module context */
+    ngx_http_<%= name %>_commands,         /* module directives */
     NGX_HTTP_MODULE,                       /* module type */
     NULL,                                  /* init master */
     NULL,                                  /* init module */
@@ -103,3 +119,16 @@ ngx_module_t <%= name %> = {
     NULL,                                  /* exit master */
     NGX_MODULE_V1_PADDING
 };
+
+
+static char *
+ngx_http_placeholder(ngx_conf_t *cf, ngx_command_t *cmd, void *conf) {
+    ngx_http_<%= name %>_loc_conf_t *aflcf = conf;
+
+    ngx_str_t                  *value;
+
+
+    value = cf->args->elts;
+
+    return NGX_CONF_OK;
+}
