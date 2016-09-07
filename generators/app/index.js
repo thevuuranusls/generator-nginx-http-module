@@ -4,15 +4,15 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 
 var ctx_hooks = [
-                  'preconfiguration',
-                  'postconfiguration',
-                  'create_main_configuration',
-                  'init_main_configuration',
-                  'create_server_configuration',
-                  'merge_server_configuration',
-                  'create_location_configuration',
-                  'merge_location_configuration',
-                 ];
+  'preconfiguration',
+  'postconfiguration',
+  'create_main_configuration',
+  'init_main_configuration',
+  'create_server_configuration',
+  'merge_server_configuration',
+  'create_location_configuration',
+  'merge_location_configuration',
+];
 
 module.exports = yeoman.Base.extend({
   prompting: function () {
@@ -65,9 +65,13 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: function () {
+    this.fs.copy(
+      this.templatePath('ddebug.h'),
+      this.destinationPath(`src/ddebug.h`)
+    );
     this.fs.copyTpl(
       this.templatePath('ngx_http_module.c'),
-      this.destinationPath(`${this.props.name}.c`),
+      this.destinationPath(`src/${this.props.name}.c`),
       {
         name: this.props.name,
         phase: this.props.phase,
@@ -76,7 +80,7 @@ module.exports = yeoman.Base.extend({
     );
     this.fs.copyTpl(
       this.templatePath('ngx_http_module.h'),
-      this.destinationPath(`${this.props.name}.h`),
+      this.destinationPath(`src/${this.props.name}.h`),
       {
         name: this.props.name,
         phase: this.props.phase,

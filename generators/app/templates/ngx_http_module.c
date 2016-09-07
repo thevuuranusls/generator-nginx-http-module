@@ -1,3 +1,12 @@
+#ifndef DDEBUG
+#define DDEBUG 0
+#endif
+#include "ddebug.h"
+
+#include <ngx_config.h>
+#include <ngx_core.h>
+#include <ngx_http.h>
+
 #include "<%= name %>.h"
 
 <% if (ctx.preconfiguration) { -%>
