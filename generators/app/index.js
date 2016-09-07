@@ -70,6 +70,10 @@ module.exports = yeoman.Base.extend({
       this.destinationPath(`src/ddebug.h`)
     );
     this.fs.copy(
+      this.templatePath('Makefile'),
+      this.destinationPath(`Makefile`)
+    );
+    this.fs.copy(
       this.templatePath('editorconfig'),
       this.destinationPath(`.editorconfig`)
     );
