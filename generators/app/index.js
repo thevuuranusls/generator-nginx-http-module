@@ -66,7 +66,7 @@ module.exports = yeoman.Base.extend({
 
   writing: function () {
     this.fs.copy(
-      this.templatePath('ddebug.h'),
+      this.templatePath('src/ddebug.h'),
       this.destinationPath(`src/ddebug.h`)
     );
     this.fs.copy(
@@ -82,22 +82,24 @@ module.exports = yeoman.Base.extend({
       this.destinationPath(`.gitattributes`)
     );
     this.fs.copyTpl(
+      this.templatePath('config'),
+      this.destinationPath(`config`),
+      this.props
+    );
+    this.fs.copyTpl(
       this.templatePath('src/ngx_http_module.c'),
       this.destinationPath(`src/${this.props.name}.c`),
-      {
-        name: this.props.name,
-        phase: this.props.phase,
-        ctx: this.props.ctx
-      }
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath('src/ngx_http_module.c'),
+      this.destinationPath(`src/${this.props.name}.c`),
+      this.props
     );
     this.fs.copyTpl(
       this.templatePath('src/ngx_http_module.h'),
       this.destinationPath(`src/${this.props.name}.h`),
-      {
-        name: this.props.name,
-        phase: this.props.phase,
-        ctx: this.props.ctx
-      }
+      this.props
     );
   },
 

@@ -1,0 +1,25 @@
+ngx_addon_name=ngx_http_<%= name %>_module
+
+<%= name.toUpperCase() %>_SRCS="                                                         \
+                $ngx_addon_dir/src/ngx_http_<%= name %>_module.c            \
+                "
+
+<%= name.toUpperCase() %>_DEPS="                                                         \
+                $ngx_addon_dir/src/ddebug.h                                 \
+                $ngx_addon_dir/src/ngx_http_<%= name %>_module.h            \
+                "
+
+if test -n "$ngx_module_link"; then
+    ngx_module_type=HTTP
+    ngx_module_name=$ngx_addon_name
+    ngx_module_incs=
+    ngx_module_deps="$<%= name.toUpperCase() %>_DEPS"
+    ngx_module_srcs="$<%= name.toUpperCase() %>_SRCS"
+    ngx_module_libs=
+
+    . auto/module
+else
+    HTTP_MODULES="$HTTP_MODULES $ngx_addon_name"
+    NGX_ADDON_SRCS="$NGX_ADDON_SRCS $<%= name.toUpperCase() %>_SRCS"
+    NGX_ADDON_DEPS="$NGX_ADDON_DEPS $<%= name.toUpperCase() %>_DEPS"
+fi
