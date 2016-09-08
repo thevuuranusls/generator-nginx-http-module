@@ -211,7 +211,7 @@ static void *
 }
 <% } -%>
 
-<% if (ctx.mrege_location_configuration) { -%>
+<% if (ctx.merge_location_configuration) { -%>
 static char *
 <%= name %>_merge_loc_conf(ngx_conf_t *cf, void *prev, void *conf)
 {
