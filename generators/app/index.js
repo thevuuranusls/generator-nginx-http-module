@@ -105,6 +105,10 @@ module.exports = yeoman.Base.extend({
       this.destinationPath(`src/${this.props.name}.h`),
       this.props
     );
+    this.fs.copy(
+      this.templatePath('t/000.t'),
+      this.destinationPath(`t/000.t`)
+    );
   },
 
   install: function () {
