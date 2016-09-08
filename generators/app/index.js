@@ -92,17 +92,17 @@ module.exports = yeoman.Base.extend({
     );
     this.fs.copyTpl(
       this.templatePath('src/ngx_http_module.c'),
-      this.destinationPath(`src/${this.props.name}.c`),
+      this.destinationPath(`src/ngx_http_${this.props.name}_module.c`),
       this.props
     );
     this.fs.copyTpl(
       this.templatePath('src/ngx_http_module.c'),
-      this.destinationPath(`src/${this.props.name}.c`),
+      this.destinationPath(`src/ngx_http_${this.props.name}_module.c`),
       this.props
     );
     this.fs.copyTpl(
       this.templatePath('src/ngx_http_module.h'),
-      this.destinationPath(`src/${this.props.name}.h`),
+      this.destinationPath(`src/ngx_http_${this.props.name}_module.h`),
       this.props
     );
     this.fs.copy(
