@@ -129,10 +129,10 @@ ngx_module_t ngx_http_<%= name %>_module = {
 static char *
 ngx_http_placeholder(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
-    ngx_str_t                  *value;
-    ngx_http_<%= name %>_loc_conf_t <%= name[0] %>lcf;
-    ngx_http_<%= name %>_srv_conf_t <%= name[0] %>scf;
-    ngx_http_<%= name %>_main_conf_t <%= name[0] %>mcf;
+    ngx_str_t                       *value;
+    ngx_http_<%= name %>_loc_conf_t *<%= name[0] %>lcf;
+    ngx_http_<%= name %>_srv_conf_t *<%= name[0] %>scf;
+    ngx_http_<%= name %>_main_conf_t *<%= name[0] %>mcf;
 
 
     <%= name[0] %>lcf = ngx_http_conf_get_module_loc_conf(cf, ngx_http_<%= name %>_module);
