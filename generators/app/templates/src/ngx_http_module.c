@@ -123,8 +123,6 @@ ngx_module_t ngx_http_<%= name %>_module = {
 
 static char *
 ngx_http_placeholder(ngx_conf_t *cf, ngx_command_t *cmd, void *conf) {
-    ngx_http_<%= name %>_loc_conf_t *aflcf = conf;
-
     ngx_str_t                  *value;
 
 
