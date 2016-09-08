@@ -102,7 +102,7 @@ static ngx_http_module_t  <%= name %>_ctx = {
     <% } else { -%>
         NULL,
     <% } -%>
-    <% if (ctx.mrege_location_configuration) { -%>
+    <% if (ctx.merge_location_configuration) { -%>
         <%= name %>_merge_loc_conf,
     <% } else { -%>
         NULL,
