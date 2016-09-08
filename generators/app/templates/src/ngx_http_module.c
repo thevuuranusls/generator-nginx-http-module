@@ -207,7 +207,18 @@ static char *
 static void *
 <%= name %>_create_loc_conf(ngx_conf_t *cf)
 {
+    ngx_http_<%= name %>_loc_conf_t *conf;
 
+    conf = ngx_pcalloc(cf->pool, sizeof(ngx_http_<%= name %>_loc_conf_t));
+    if (ahlcf == NULL) {
+        return NULL;
+    }
+
+    /*
+     * set by ngx_pcalloc():
+     */
+
+    return conf;
 }
 <% } -%>
 
@@ -215,7 +226,10 @@ static void *
 static char *
 <%= name %>_merge_loc_conf(ngx_conf_t *cf, void *prev, void *conf)
 {
+    ngx_http_<%= name %>_loc_conf_t *prev = parent;
+    ngx_http_<%= name %>_loc_conf_t *conf = child;
 
+    return NGX_CONF_OK;
 }
 <% } -%>
 
