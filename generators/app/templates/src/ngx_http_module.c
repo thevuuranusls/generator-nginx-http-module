@@ -49,7 +49,7 @@ static char *
 ngx_http_placeholder(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
 
 
-static ngx_command_t <%= name %>_commands[] = [
+static ngx_command_t <%= name %>_commands[] = {
     {
         ngx_string("placeholder"),
         NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_HTTP_LIF_CONF
@@ -60,7 +60,7 @@ static ngx_command_t <%= name %>_commands[] = [
         NULL
     },
     ngx_null_command
-];
+};
 
 
 static ngx_http_module_t  <%= name %>_ctx = {
