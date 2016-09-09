@@ -49,7 +49,7 @@ static char *
 ngx_http_placeholder(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
 
 
-static ngx_command_t <%= name %>_commands[] = {
+static ngx_command_t ngx_http_<%= name %>_commands[] = {
     {
         ngx_string("placeholder"),
         NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_HTTP_LIF_CONF
