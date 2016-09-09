@@ -63,7 +63,7 @@ static ngx_command_t <%= name %>_commands[] = {
 };
 
 
-static ngx_http_module_t  <%= name %>_ctx = {
+static ngx_http_module_t  ngx_http_<%= name %>_ctx = {
     <% if (ctx.preconfiguration) { -%>
         ngx_http_<%= name %>_pre_conf,
     <% } else { -%>
