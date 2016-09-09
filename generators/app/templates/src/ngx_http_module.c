@@ -31,7 +31,7 @@ ngx_http_<%= name %>_create_server_conf(ngx_conf_t *cf);
 <% } -%>
 <% if (ctx.merge_server_configuration) { -%>
 static char *
-ngx_http_<%= name %>_merge_server_conf(ngx_conf_t *cf, void *prev, void *conf);
+ngx_http_<%= name %>_merge_server_conf(ngx_conf_t *cf, void *parent, void *child);
 <% } -%>
 <% if (ctx.create_location_configuration) { -%>
 static void *
@@ -39,7 +39,7 @@ ngx_http_<%= name %>_create_loc_conf(ngx_conf_t *cf);
 <% } -%>
 <% if (ctx.merge_location_configuration) { -%>
 static char *
-ngx_http_<%= name %>_merge_loc_conf(ngx_conf_t *cf, void *prev, void *conf);
+ngx_http_<%= name %>_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child);
 <% } -%>
 <% if (ctx.postconfiguration) { -%>
 static ngx_int_t
@@ -197,7 +197,7 @@ ngx_http_<%= name %>_create_server_conf(ngx_conf_t *cf)
 
 <% if (ctx.merge_server_configuration) { -%>
 static char *
-ngx_http_<%= name %>_merge_server_conf(ngx_conf_t *cf, void *prev, void *conf)
+ngx_http_<%= name %>_merge_server_conf(ngx_conf_t *cf, void *parent, void *child)
 {
 
 }
@@ -210,7 +210,7 @@ ngx_http_<%= name %>_create_loc_conf(ngx_conf_t *cf)
     ngx_http_<%= name %>_loc_conf_t *conf;
 
     conf = ngx_pcalloc(cf->pool, sizeof(ngx_http_<%= name %>_loc_conf_t));
-    if (ahlcf == NULL) {
+    if (conf == NULL) {
         return NULL;
     }
 
@@ -224,7 +224,7 @@ ngx_http_<%= name %>_create_loc_conf(ngx_conf_t *cf)
 
 <% if (ctx.merge_location_configuration) { -%>
 static char *
-ngx_http_<%= name %>_merge_loc_conf(ngx_conf_t *cf, void *prev, void *conf)
+ngx_http_<%= name %>_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)
 {
     ngx_http_<%= name %>_loc_conf_t *prev = parent;
     ngx_http_<%= name %>_loc_conf_t *conf = child;
