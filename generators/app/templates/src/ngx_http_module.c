@@ -37,7 +37,7 @@ ngx_http_<%= name %>_merge_server_conf(ngx_conf_t *cf, void *prev, void *conf);
 static void *
 ngx_http_<%= name %>_create_loc_conf(ngx_conf_t *cf);
 <% } -%>
-<% if (ctx.mrege_location_configuration) { -%>
+<% if (ctx.merge_location_configuration) { -%>
 static char *
 ngx_http_<%= name %>_merge_loc_conf(ngx_conf_t *cf, void *prev, void *conf);
 <% } -%>
