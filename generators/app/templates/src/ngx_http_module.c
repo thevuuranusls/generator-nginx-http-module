@@ -7,7 +7,7 @@
 #include <ngx_core.h>
 #include <ngx_http.h>
 
-#include "<%= name %>.h"
+#include "ngx_http_<%= name %>_module.h"
 
 <% if (ctx.preconfiguration) { -%>
 static ngx_int_t
