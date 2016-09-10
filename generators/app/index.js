@@ -13,6 +13,15 @@ var ctx_hooks = [
   'create_location_configuration',
   'merge_location_configuration',
 ];
+var module_hooks = [
+  'init_master',
+  'init_module',
+  'init_process',
+  'init_thread',
+  'exit_thread',
+  'exit_process',
+  'exit_master',
+]
 
 module.exports = yeoman.Base.extend({
   prompting: function () {
@@ -26,6 +35,13 @@ module.exports = yeoman.Base.extend({
         type: 'input',
         name: 'name',
         message: 'what\'s your module name (ngx_http_xx_module)',
+      },
+      {
+        type: 'checkbox',
+        name: 'module',
+        message: 'what module hook do you want',
+        choices: module_hooks,
+        default: ''
       },
       {
         type: 'list',
@@ -59,7 +75,16 @@ module.exports = yeoman.Base.extend({
           ctx[hook] = true;
         }
       }
+      var module = {};
+      for (var i = 0; i < module_hooks.length; i++) {
+        var hook = module_hooks[i];
+        if (props.module.indexOf(hook) !== -1) {
+          module[hook] = true;
+        }
+      }
+
       props.ctx = ctx;
+      props.module = module;
       this.props = props;
     }.bind(this));
   },
