@@ -25,7 +25,7 @@ module.exports = yeoman.Base.extend({
       {
         type: 'input',
         name: 'name',
-        message: 'what\'s your module name',
+        message: 'what\'s your module name (ngx_http_xx_module)',
       },
       {
         type: 'list',
