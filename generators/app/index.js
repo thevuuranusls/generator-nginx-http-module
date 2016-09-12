@@ -116,6 +116,11 @@ module.exports = yeoman.Base.extend({
       this.props
     );
     this.fs.copyTpl(
+      this.templatePath('valgrind.suppress'),
+      this.destinationPath(`valgrind.suppress`),
+      this.props
+    );
+    this.fs.copyTpl(
       this.templatePath('src/ngx_http_module.c'),
       this.destinationPath(`src/ngx_http_${this.props.name}_module.c`),
       this.props
