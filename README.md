@@ -1,4 +1,4 @@
-# generator-nginx-http-module [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-nginx-http-module
 > create nginx http module
 
 ## Installation
